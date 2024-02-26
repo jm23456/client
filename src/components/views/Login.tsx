@@ -81,6 +81,16 @@ const Login = () => {
               Login
             </Button>
           </div>
+          <div clasName="register button-container">
+            <Button
+              disabled={!username || !name}
+              width="100%"
+              onClick={() => doLogin()}
+            >
+              Register
+            </Button>
+
+          </div>
         </div>
       </div>
     </BaseContainer>
