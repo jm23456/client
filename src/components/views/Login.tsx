@@ -38,9 +38,9 @@ const Login = () => {
   const [name, setName] = useState<string>(null);
   const [username, setUsername] = useState<string>(null);
 
-  const doLogin = async () => {
+  const doRegister = async () => {
     try {
-      const requestBody = JSON.stringify({ username, name });
+      const requestBody = JSON.stringify({ username, password });
       const response = await api.post("/users", requestBody);
 
       // Get the returned user and update a new object.
@@ -58,6 +58,8 @@ const Login = () => {
     }
   };
 
+  const doLogin = async () => {}
+
   return (
     <BaseContainer>
       <div className="login container">
@@ -68,13 +70,13 @@ const Login = () => {
             onChange={(un: string) => setUsername(un)}
           />
           <FormField
-            label="Name"
-            value={name}
+            label="Password"
+            value={password}
             onChange={(n) => setName(n)}
           />
           <div className="login button-container">
             <Button
-              disabled={!username || !name}
+              disabled={!username || !password}
               width="100%"
               onClick={() => doLogin()}
             >
@@ -83,9 +85,9 @@ const Login = () => {
           </div>
           <div className="register button-container">
             <Button
-              disabled={!username || !name}
+              disabled={!username || !password}
               width="100%"
-              onClick={() => doLogin()}
+              onClick={() => doRegister()}
             >
               Register
             </Button>
