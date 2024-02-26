@@ -80,8 +80,6 @@ const Login = () => {
             >
               Login
             </Button>
-          </div>
-          <div clasName="register button-container">
             <Button
               disabled={!username || !name}
               width="100%"
