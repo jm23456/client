@@ -83,6 +83,7 @@ const Login = () => {
           </div>
           <div className="register button-container">
             <Button
+              disabled={!username || !name}
               width="100%"
               onClick={() => doLogin()}
             >
