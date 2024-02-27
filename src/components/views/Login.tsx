@@ -35,7 +35,7 @@ FormField.propTypes = {
 
 const Login = () => {
   const navigate = useNavigate();
-  const [password, setPassword] = useState<string>(null);
+  const [password, setName] = useState<string>(null);
   const [username, setUsername] = useState<string>(null);
 
   const doLogin = async () => {
@@ -70,7 +70,7 @@ const Login = () => {
           <FormField
             label="Password"
             value={password}
-            onChange={(n) => setPassword(n)}
+            onChange={(n) => setName(n)}
           />
           <div className="login button-container">
             <Button
