@@ -38,7 +38,7 @@ const Login = () => {
   const [password, setPassword] = useState<string>(null);
   const [username, setUsername] = useState<string>(null);
 
-  const doRegister = async () => {
+  const doLogin = async () => {
     try {
       const requestBody = JSON.stringify({ username, password });
       const response = await api.post("/users", requestBody);
@@ -57,10 +57,6 @@ const Login = () => {
       );
     }
   };
-
-  const doLogin = async () => {
-
-  }
 
   return (
     <BaseContainer>
@@ -89,7 +85,6 @@ const Login = () => {
             <Button
               disabled={!username || !password}
               width="100%"
-              onClick={() => doRegister()}
             >
               Register
             </Button>
