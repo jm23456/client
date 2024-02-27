@@ -53,12 +53,14 @@ const Login = () => {
       navigate("/game");
     } catch (error) {
       alert(
-        `Something went wrong during the login: \n${handleError(error)}`
+        `Something went wrong during the registry: \n${handleError(error)}`
       );
     }
   };
 
-  const doLogin = async () => {}
+  const doLogin = async () => {
+
+  }
 
   return (
     <BaseContainer>
