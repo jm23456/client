@@ -3,7 +3,7 @@ import { api, handleError } from "helpers/api";
 import User from "models/User";
 import {useNavigate} from "react-router-dom";
 import { Button } from "components/ui/Button";
-import "styles/views/Login.scss";
+import "styles/views/Register.scss";
 import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 
@@ -33,14 +33,15 @@ FormField.propTypes = {
   onChange: PropTypes.func,
 };
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
-  const [password, setPassword] = useState<string>(null);
+  const [name, setName] = useState<string>(null);
   const [username, setUsername] = useState<string>(null);
+  const [password, setPassword] = useState<string>(null);
 
-  const doLogin = async () => {
+  const doRegister = async () => {
     try {
-      const requestBody = JSON.stringify({ username, password });
+      const requestBody = JSON.stringify({ username, name, password });
       const response = await api.post("/users", requestBody);
 
       // Get the returned user and update a new object.
@@ -74,17 +75,17 @@ const Login = () => {
           />
           <div className="login button-container">
             <Button
-              disabled={!username || !password}
               width="100%"
-              onClick={() => doLogin()}
+              onClick={() => navigate('/login')}
             >
               Login
             </Button>
           </div>
           <div className="register button-container">
             <Button
+              disabled={!username || !name || !password}
               width="100%"
-              onClick={() => navigate('/register')}
+              onClick={() => doRegister()}
             >
               Register
             </Button>
@@ -98,4 +99,4 @@ const Login = () => {
 /**
  * You can get access to the history object's properties via the useLocation, useNavigate, useParams, ... hooks.
  */
-export default Login;
+export default Register;
