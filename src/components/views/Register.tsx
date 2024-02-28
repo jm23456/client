@@ -41,7 +41,7 @@ const Register = () => {
 
   const doRegister = async () => {
     try {
-      const requestBody = JSON.stringify({ username, name, password });
+      const requestBody = JSON.stringify({ name, username, password });
       const response = await api.post("/users", requestBody);
 
       // Get the returned user and update a new object.
@@ -61,8 +61,13 @@ const Register = () => {
 
   return (
     <BaseContainer>
-      <div className="login container">
-        <div className="login form">
+      <div className="register container">
+        <div className="register form">
+        <FormField
+            label="Name"
+            value={name}
+            onChange={(n) => setName(n)}
+          />
           <FormField
             label="Username"
             value={username}
@@ -73,21 +78,21 @@ const Register = () => {
             value={password}
             onChange={(n) => setPassword(n)}
           />
+          <div className="register button-container">
+            <Button
+              disabled={!username || !password}
+              width="100%"
+              onClick={() => doRegister()}
+            >
+              Register
+            </Button>
+          </div>
           <div className="login button-container">
             <Button
               width="100%"
               onClick={() => navigate('/login')}
             >
-              Login
-            </Button>
-          </div>
-          <div className="register button-container">
-            <Button
-              disabled={!username || !name || !password}
-              width="100%"
-              onClick={() => doRegister()}
-            >
-              Register
+              Login instead?
             </Button>
           </div>
         </div>
