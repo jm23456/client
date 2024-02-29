@@ -11,8 +11,10 @@ import { User } from "types";
 const Player = ({ user }: { user: User }) => (
   <div className="player container">
     <div className="player username">{user.username}</div>
-    <div className="player password">{user.name}</div>
+    <div className="player name">{user.name}</div>
+    <div className="player password">{user.password}</div>
     <div className="player id">id: {user.id}</div>
+    <div className='player status'>status: {user.status}</div>
   </div>
 );
 
@@ -32,6 +34,7 @@ const Game = () => {
   const [users, setUsers] = useState<User[]>(null);
 
   const logout = (): void => {
+    api.put("/users/logout", Player);
     localStorage.removeItem("token");
     navigate("/login");
   };
@@ -86,7 +89,7 @@ const Game = () => {
       <div className="game">
         <ul className="game user-list">
           {users.map((user: User) => (
-            <li key={user.id}>
+             <li key={user.name}> 
               <Player user={user} />
             </li>
           ))}
@@ -96,7 +99,7 @@ const Game = () => {
         </Button>
       </div>
     );
-  }
+          }
 
   return (
     <BaseContainer className="game container">
@@ -107,6 +110,5 @@ const Game = () => {
       {content}
     </BaseContainer>
   );
-};
-
+  };
 export default Game;
