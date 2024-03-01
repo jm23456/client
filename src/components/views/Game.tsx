@@ -34,7 +34,10 @@ const Game = () => {
   const [users, setUsers] = useState<User[]>(null);
 
   const logout = (): void => {
-    api.put("/users/logout", Player);
+    const username = useState<string>(null);
+    const password = useState<string>(null);
+    const requestBody = JSON.stringify( {username, password});
+    api.put("/users/logout", requestBody);
     localStorage.removeItem("token");
     navigate("/login");
   };

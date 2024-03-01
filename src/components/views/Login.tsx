@@ -41,13 +41,14 @@ const Login = () => {
   const doLogin = async () => {
     try {
       const requestBody = JSON.stringify({ username, password });
-      await api.put("/users/login", requestBody);
+      const response = await api.put("/users/login", requestBody);
+      const id = response.data.id
 
       // Get the returned user and update a new object.
-      //const user = new User(response.data);
+      const user = new User(response.data);
 
       // Store the token into the local storage.
-      //localStorage.setItem("token", user.token);
+      localStorage.setItem("status", user.status);
 
       // Login successfully worked --> navigate to the route /game in the GameRouter
       navigate("/game");
