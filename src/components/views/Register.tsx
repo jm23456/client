@@ -63,7 +63,7 @@ const Register = () => {
     <BaseContainer>
       <div className="register container">
         <div className="register form">
-        <FormField
+          <FormField
             label="Name"
             value={name}
             onChange={(n) => setName(n)}
@@ -90,7 +90,7 @@ const Register = () => {
           <div className="login button-container">
             <Button
               width="100%"
-              onClick={() => navigate('/login')}
+              onClick={() => navigate("/login")}
             >
               Login instead?
             </Button>

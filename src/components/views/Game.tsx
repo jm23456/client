@@ -92,7 +92,7 @@ const Game = () => {
       <div className="game">
         <ul className="game user-list">
           {users.map((user: User) => (
-             <li key={user.name}> 
+            <li key={user.name}> 
               <Player user={user} />
             </li>
           ))}
@@ -102,7 +102,7 @@ const Game = () => {
         </Button>
       </div>
     );
-          }
+  }
 
   return (
     <BaseContainer className="game container">
@@ -113,5 +113,6 @@ const Game = () => {
       {content}
     </BaseContainer>
   );
-  };
+};
+
 export default Game;
