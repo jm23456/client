@@ -85,7 +85,7 @@ const Login = () => {
           <div className="register button-container">
             <Button
               width="100%"
-              onClick={() => navigate('/register')}
+              onClick={() => navigate("/register")}
             >
               Register instead?
             </Button>
