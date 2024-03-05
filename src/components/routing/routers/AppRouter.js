@@ -35,8 +35,12 @@ const AppRouter = () => {
           <Route path="/register" element={<Register/>} />
         </Route>
 
+        <Route path="/profile" element={<RegisterGuard />}>
+          <Route path="/profile/:id" element={<Profile/>} />
+        </Route>
+
         <Route path="/" element={
-          <Navigate to="/game" replace />
+          <Navigate to="/login" replace />
         }/>
 
       </Routes>

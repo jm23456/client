@@ -45,6 +45,17 @@ const Game = () => {
     }
   };
 
+  const checkifUserisOnline = async () => {
+    try{
+      const status = localStorage.getItem("status");
+      const requestBody = JSON.stringify( {status});
+      api.get("/users/status", requestBody);
+      navigate(`/profile/${users.id}`);
+    } catch (error) {
+      alert(`User is not online. You cannot see the User Profile: \n${handleError(error)}`)
+    }
+  }
+
   // the effect hook can be used to react to change in your component.
   // in this case, the effect hook is only run once, the first time the component is mounted
   // this can be achieved by leaving the second argument an empty array.
@@ -96,8 +107,8 @@ const Game = () => {
         <ul className="game user-list">
           {users.map((user: User) => (
             <li key={user.name}> 
-              <Button onClick= {() => navigate("/profile")}>
-                <Player user={user} />
+              <Button onClick= {() => navigate(`/profile/${user.id}`)} key={user.id} >
+                <Player user={user}/>
               </Button>  
             </li>
           ))}

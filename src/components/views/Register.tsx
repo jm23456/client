@@ -51,7 +51,7 @@ const Register = () => {
 
       // Store the token into the local storage.
       localStorage.setItem("token", user.token);
-
+      console.log(user.token);
       // Login successfully worked --> navigate to the route /game in the GameRouter
       navigate("/game");
     } catch (error) {
