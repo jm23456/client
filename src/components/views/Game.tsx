@@ -33,13 +33,16 @@ const Game = () => {
   // more information can be found under https://react.dev/learn/state-a-components-memory and https://react.dev/reference/react/useState 
   const [users, setUsers] = useState<User[]>(null);
 
-  const logout = (): void => {
-    const username = useState<string>(null);
-    const password = useState<string>(null);
-    const requestBody = JSON.stringify( {username, password});
-    api.put("/users/logout", requestBody);
-    localStorage.removeItem("token");
-    navigate("/login");
+  const logout = async () => {
+    try{
+      const token = localStorage.getItem("token");
+      const requestBody = JSON.stringify( {token});
+      api.put("/logout", requestBody);
+      //localStorage.removeItem("token");
+      navigate("/login");
+    } catch (error) {
+      alert(`Something went wrong during the logout: \n${handleError(error)}`);
+    }
   };
 
   // the effect hook can be used to react to change in your component.
@@ -93,7 +96,9 @@ const Game = () => {
         <ul className="game user-list">
           {users.map((user: User) => (
             <li key={user.name}> 
-              <Player user={user} />
+              <Button onClick= {() => navigate("/profile")}>
+                <Player user={user} />
+              </Button>  
             </li>
           ))}
         </ul>
