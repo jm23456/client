@@ -25,15 +25,20 @@ const Profile = () => {
       console.log("id:" + id);  
 
       try {
+
         const response = await api.get(`/users/${id}`);
-        console.log("request to:", response.request.responseURL);
+        //if (response.data.status === "OFFLINE"){
+        //  alert("User is offline. You cannot see the User Profile.")
+        //  navigate("/game")
+        //}
+        //console.log("request to:", response.request.responseURL);
 
-        console.log("status code:", response.status);
+        //console.log("RESPONSE STATUS", response.data.status);
 
-        console.log("status text:", response.statusText);
+        //console.log("status text:", response.statusText);
 
-        console.log("requested data:", response.data);
-        console.log("RESPONSE DATA" + response.data);
+        //console.log("requested data:", response.data);
+        //console.log("RESPONSE Id" + response.data.id);
         setUser(response.data);
 
         await new Promise(resolve => setTimeout(resolve, 1000)); //current async function waits 1sec (1000 milliseconds) before continuing with the next line of code.
@@ -73,9 +78,8 @@ const Profile = () => {
       {content}
       <div className='button-container'>
         <Button
-          disabled={localStorage.getItem("id")!==id}
           width="100%"
-          onClick={() => navigate(`/game/users/${id}/edit`)}
+          onClick={() => navigate(`/edit/${id}`, {state: user.username})}
         >
                     Edit
         </Button>

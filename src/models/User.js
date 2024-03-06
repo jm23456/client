@@ -9,6 +9,7 @@ class User {
     this.password = null;
     this.token = null;
     this.status = null;
+    this.creationdate = new Date();
     Object.assign(this, data);
   }
 }

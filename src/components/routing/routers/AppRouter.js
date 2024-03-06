@@ -8,6 +8,7 @@ import {RegisterGuard} from "../routeProtectors/RegisterGuard";
 import Register from "../../views/Register";
 import {ProfileGuard} from "../routeProtectors/ProfileGuard";
 import Profile from "../../views/Profile";
+import Edit from "../../views/Edit";
 
 /**
  * Main router of your application.
@@ -35,8 +36,12 @@ const AppRouter = () => {
           <Route path="/register" element={<Register/>} />
         </Route>
 
-        <Route path="/profile" element={<RegisterGuard />}>
+        <Route path="/profile" element={<GameGuard />}>
           <Route path="/profile/:id" element={<Profile/>} />
+        </Route>
+
+        <Route path="/edit" element={<GameGuard />}>
+          <Route path="/edit/:id" element={<Edit />} />
         </Route>
 
         <Route path="/" element={

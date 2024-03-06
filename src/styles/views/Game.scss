@@ -27,6 +27,13 @@
     align-items: center;
     justify-content: center;
   }
+  &.userbutton {
+    color: white;
+  }
+  &.userbutton:hover {
+    color: pink;
+    background-color: pink;
+  }
   & p,h2 {
     margin: 0.5em 0;
   }

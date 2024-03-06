@@ -107,9 +107,9 @@ const Game = () => {
         <ul className="game user-list">
           {users.map((user: User) => (
             <li key={user.name}> 
-              <Button onClick= {() => navigate(`/profile/${user.id}`)} key={user.id} >
-                <Player user={user}/>
-              </Button>  
+              <div className="game userbutton" onClick= {() => navigate(`/profile/${user.id}`)} key={user.id} >
+                <Player user={user} />
+              </div>  
             </li>
           ))}
         </ul>
@@ -124,7 +124,7 @@ const Game = () => {
     <BaseContainer className="game container">
       <h2>Happy Coding!</h2>
       <p className="game paragraph">
-        Get all users from secure endpoint:
+        Get all users from secure endpoint (click on user to edit profile):
       </p>
       {content}
     </BaseContainer>

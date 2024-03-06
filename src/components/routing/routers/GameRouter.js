@@ -14,7 +14,7 @@ const GameRouter = () => {
         <Route path="dashboard" element={<Game />} />
 
         <Route path="*" element={<Navigate to="dashboard" replace />} />
-
+        
       </Routes>
     </div>
   );
