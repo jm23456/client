@@ -37,7 +37,7 @@ const Profile = () => {
 
         //console.log("status text:", response.statusText);
 
-        //console.log("requested data:", response.data);
+        console.log("requested data:", response.data);
         //console.log("RESPONSE Id" + response.data.id);
         setUser(response.data);
 
@@ -63,10 +63,10 @@ const Profile = () => {
   if (user) {
     content = (
       <div className="user-profile">
-        <h2>User Profile {user.id}</h2>
+        <h2>User Profil {user.name}</h2>
         <p><strong>Username:</strong> {user.username}</p>
         <p><strong>Birthday:</strong> {user.birthday}</p>
-        <p><strong>Account Created:</strong> {user.creation_date}</p>
+        <p><strong>Creation Date:</strong> {user.creationdate}</p>
         <p><strong>Status:</strong> {user.status}</p>
       </div>
     );
@@ -77,12 +77,15 @@ const Profile = () => {
       <h1>Profile Page</h1>
       {content}
       <div className='button-container'>
-        <Button
-          width="100%"
-          onClick={() => navigate(`/edit/${id}`, {state: user.username})}
-        >
+        {user && user.status === "ONLINE" && ( //check that there is a user && user.status === ONLINE
+          <Button
+            width="100%"
+            onClick={() => navigate(`/edit/${id}`, {state: user.username})}
+          >
                     Edit
-        </Button>
+          </Button>
+        )}
+    
         <Button
           width="100%"
           onClick={() => navigate("/game")}

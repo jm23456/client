@@ -54,7 +54,7 @@ const Edit = () => {
       const response = await api.put(`/users/${id}`, requestBody);
       console.log("RESBody" + response.data.birthday)
       navigate(`/profile/${id}`)
-  } catch (error) {
+    } catch (error) {
       alert("Something went wrong while fetching the requested user!!!!")
     }
   }
@@ -96,6 +96,8 @@ const Edit = () => {
       }
 
     }
+
+    
     fetchProfile();
     console.log(user);
 
@@ -107,10 +109,12 @@ const Edit = () => {
     content = (
       <div className="user-profile">
         <h2>User Profile {user.id}</h2>
-        <p><strong>Username:</strong> <FormField
-          value={user.username}
-          onChange={(un: string) => setUsername(un)}
-        /></p>
+        <p><strong>Username:</strong> 
+          <FormField
+            type="text"
+            value={username}
+            onChange={un => setUsername(un)}
+          /></p>
         <p><strong>Birthday:</strong> {user.birthday}
           <DatePicker 
             selected={birthday} 

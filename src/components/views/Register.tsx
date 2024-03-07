@@ -47,7 +47,14 @@ const Register = () => {
       console.log(requestBody)
 
       // Get the returned user and update a new object.
-      const user = new User(response.data);
+      const user = new User({id: response.data.id,
+        name: response.data.name,
+        username: response.data.username,
+        password: response.data.password,
+        token: response.data.token, // Set the token property
+        status: response.data.status,
+        creationdate: new Date()
+      });
 
       // Store the token into the local storage.
       localStorage.setItem("token", user.token);
