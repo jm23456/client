@@ -42,6 +42,7 @@ const Register = () => {
   const doRegister = async () => {
     try {
       const requestBody = JSON.stringify({ name, username, password });
+      console.log(requestBody);
       const response = await api.post("/users", requestBody);
 
       console.log(requestBody)

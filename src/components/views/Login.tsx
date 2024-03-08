@@ -41,7 +41,8 @@ const Login = () => {
   const doLogin = async () => {
     try {
       const requestBody = JSON.stringify({ username, password });
-      const response = await api.put("/users/login", requestBody);
+      console.log("REQ DATA " + requestBody);
+      const response = await api.post("/users/login", requestBody);
       console.log("RESP DATA " + JSON.stringify(response.data));
       const id = response.data.id
 
