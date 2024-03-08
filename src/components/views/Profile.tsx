@@ -41,8 +41,7 @@ const Profile = () => {
         //console.log("RESPONSE Id" + response.data.id);
         setUser(response.data);
 
-        await new Promise(resolve => setTimeout(resolve, 1000)); //current async function waits 1sec (1000 milliseconds) before continuing with the next line of code.
-
+      
       } catch (error) {
 
         console.error(`Something went wrong while fetching the requested user: \n${handleError(error)}`);
