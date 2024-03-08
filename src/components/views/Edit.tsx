@@ -42,13 +42,9 @@ const Edit = () => {
 
   const doSave = async() => {
     try{
+      //token from currently logged in user
       const token=localStorage.getItem("token");
-      let requestBody;
-
-      //if (username === null) {
-      //  requestBody = JSON.stringify({username: "hello", "birthday": birthday, "token": token})
-      //} else{
-      requestBody= JSON.stringify({"username":username, "birthday": birthday, "token":token});
+      const requestBody= JSON.stringify({"username":username, "birthday": birthday, "token":token});
 
       console.log("REQBody" + requestBody)
       const response = await api.put(`/users/${id}`, requestBody);
