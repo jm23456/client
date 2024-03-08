@@ -63,6 +63,7 @@ const Profile = () => {
   if (user) {
     content = (
       <div className="user-profile">
+        <h2>User {user.name}</h2>
         <p><strong>Username:</strong> {user.username}</p>
         <p><strong>Birthday:</strong> {user.birthday}</p>
         <p><strong>Creation Date:</strong> {user.creationdate}</p>
@@ -73,7 +74,7 @@ const Profile = () => {
 
   return (
     <BaseContainer className="game container">
-      <h1>Profile Page User {user.name}</h1>
+      <h1>Profile Page User</h1>
       {content}
       <div className='button-container'>
         {user && user.status === "ONLINE" && ( //check that there is a user && user.status === ONLINE
