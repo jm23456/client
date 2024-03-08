@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
  */
 export const GameGuard = () => {
   console.log(localStorage.getItem("token"));
-  if (localStorage.getItem("username")) {
+  if (!localStorage.getItem("username")) {
     
     return <Outlet />;
   }
